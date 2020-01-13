@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-path = raw_input("path to file\n> ")
-all= np.genfromtxt(path, delimiter=",")
+pathroute = raw_input("path to route\n> ")
+route= np.genfromtxt(pathroute, delimiter=",",dtype='unicode')
+pathpassenger = raw_input("path to passenger\n> ")
+route= np.genfromtxt(pathpassenger, delimiter=",",dtype='unicode')
 
 def timetable(route):
     '''
