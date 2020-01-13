@@ -1,3 +1,9 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+path = raw_input("path to file\n> ")
+all= np.genfromtxt(path, delimiter=",")
+
 def timetable(route):
     '''
     Generates a timetable for a route as minutes from its first stop.
