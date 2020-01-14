@@ -3,22 +3,21 @@ import matplotlib.pyplot as plt
 from read_passengers import Read_passengers
 
 pathroute = input("path to route\n> ")
-pathpassenger = input("path to passenger\n> ")
 
 #pathroute = "route.csv"
-#pathpassenger = "passenger.csv"
 
-route,passengers,passenger_id=Read_passengers(pathroute,pathpassenger)
-xcoord=[]
-ycoord=[]
-bstop=[]
-
-for points in range(len(route)):
-    xcoord.append(route[points][0])
-    ycoord.append(route[points][1])
-    bstop.append(route[points][2])
 
 class Route:
+
+    route=Read_route(pathroute)
+    xcoord=[]
+    ycoord=[]
+    bstop=[]
+
+    for points in range(len(route)):
+        xcoord.append(route[points][0])
+        ycoord.append(route[points][1])
+        bstop.append(route[points][2])
 
     def __init__(self,xcoord,ycoord,bstop): 
         self.xcoord = xcoord

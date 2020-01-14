@@ -2,12 +2,9 @@ import numpy as np
  
 def Read_passengers(pathroute,pathpassenger):
 
-    routegentext= np.genfromtxt(pathroute, delimiter=",",dtype='unicode')
     passgentext= np.genfromtxt(pathpassenger, delimiter=",",dtype='int')
     
-    route=[]
-    for i in range(len(routegentext)):
-        route.append((int(routegentext[i,0]),int(routegentext[i,1]),(routegentext[i,2])))
+
         
     passengers=[]    
     for j in range(len(passgentext)):
@@ -15,5 +12,14 @@ def Read_passengers(pathroute,pathpassenger):
 
     passenger_id=np.linspace(1,len(passgentext),len(passgentext))
 
-    return route,passengers,passenger_id
+    return passengers,passenger_id
 
+def Read_route(pathroute):
+
+    routegentext= np.genfromtxt(pathroute, delimiter=",",dtype='unicode')
+    route=[]
+    
+    for i in range(len(routegentext)):
+        route.append((int(routegentext[i,0]),int(routegentext[i,1]),(routegentext[i,2])))
+        
+    return route
