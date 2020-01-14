@@ -15,6 +15,7 @@ passengers=[]
 for i in range(len(passengers)):
     passengers.append(((passgentext[i,0],passgentext[i,1]),(passgentext[i,2],passgentext[i,3]),(passgentext[i,4])))
 
+passenger_id=np.linspace(1,len(passgens),len(passgens))
 
 def timetable(route):
     '''
@@ -66,8 +67,8 @@ def plot_map(route):
 
 def plot_bus_load(route, passengers):
     stops = {step[2]:0 for step in route if step[2]}
-    for passenger in passengers.values():
-        trip = passenger_trip(passenger, route)
+    for j in range(len(passengers)):
+        trip = passenger_trip(passengers[j], route)
         stops[trip[0][1]] += 1
         stops[trip[1][1]] -= 1
     for i, stop in enumerate(stops):
@@ -82,18 +83,15 @@ def plot_bus_load(route, passengers):
 
 
 print(" Stops: minutes from start\n", timetable(route))
-for passenger_id, passenger in passengers.items():
-    print(f"Trip for passenger: {passenger_id}")
-    start, end = passenger_trip(passenger, route)
-    total_time = passenger_trip_time(passenger, route)
+
+for i in range(len(passgens)):
+    print(f"Trip for passenger: {passenger_id[i]}")
+    start, end = passenger_trip(genpassenger[i], route2)
+    total_time = passenger_trip_time(genpassenger[i], route2)
     print((f" Walk {start[0]:3.2f} units to stop {start[1]}, \n"
-        f" get on the bus and alite at stop {end[1]} and \n"
-        f" walk {end[0]:3.2f} units to your destination."))
+    f" get on the bus and alite at stop {end[1]} and \n"
+    f" walk {end[0]:3.2f} units to your destination."))
     print(f" Total time of travel: {total_time:03.2f} minutes")
-# Plots the route of the bus
-plot_map(route)
-# Plots the number of passenger on the bus
-plot_bus_load(route, passengers)
 
 
 
