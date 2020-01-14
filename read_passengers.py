@@ -1,10 +1,4 @@
 import numpy as np
-'''
-pathroute = raw_input("path to route\n> ")
-routegentext= np.genfromtxt(pathroute, delimiter=",",dtype='unicode')
-pathpassenger = raw_input("path to passenger\n> ")
-passgentext= np.genfromtxt(pathpassenger, delimiter=",",dtype='unicode')
-'''
  
 def Read_passengers(pathroute,pathpassenger):
 
