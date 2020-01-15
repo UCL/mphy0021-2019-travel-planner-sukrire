@@ -1,6 +1,6 @@
 import numpy as np
  
-def Read_passengers(pathroute,pathpassenger):
+def Read_passengers(pathpassenger):
 
     passgentext= np.genfromtxt(pathpassenger, delimiter=",",dtype='int')
     

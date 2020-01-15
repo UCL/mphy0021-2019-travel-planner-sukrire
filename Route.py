@@ -1,48 +1,52 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from read_passengers import Read_passengers
+from read_passengers import Read_route
 
-pathroute = input("path to route\n> ")
+#pathroute = input("path to route\n> ")
 
-#pathroute = "route.csv"
+pathroute = "route.csv"
+
+route=Read_route(pathroute)
+xcoord=[]
+ycoord=[]
+bstop=[]
+stopno=[]
+
+for points in range(len(route)):
+    xcoord.append(route[points][0])
+    ycoord.append(route[points][1])
+    bstop.append(route[points][2])
 
 
 class Route:
 
-    route=Read_route(pathroute)
-    xcoord=[]
-    ycoord=[]
-    bstop=[]
-
-    for points in range(len(route)):
-        xcoord.append(route[points][0])
-        ycoord.append(route[points][1])
-        bstop.append(route[points][2])
 
     def __init__(self,xcoord,ycoord,bstop): 
         self.xcoord = xcoord
         self.ycoord = ycoord
         self.bstop = bstop
-        
+                
        
     def timetable(self):
+        
         time=0
-        stops = {}
-        for step in route:
-            if step[2]:
-                stops[step[2]] = time
-            time += 10
-        return stops       
-     # trying out to see if this works, will copy it back if it doesnt  
+        for tick in range(len(self.bstop)):
+            if self.bstop[tick] != '':
+                stopno.append(time)
+            else: 
+                stopno.append('')
+            time+= 10
+        return stopno,self.bstop     
+  
       
     def plot_map(self):
-        max_x = max([n[0] for n in route]) + 5 # adds padding
-        max_y = max([n[1] for n in route]) + 5
+        max_x = max([n for n in self.xcoord]) + 5 # adds padding
+        max_y = max([n for n in self.ycoord]) + 5
         grid = np.zeros((max_y, max_x))
-        for x,y,stop in route:
-            grid[y, x] = 1
-            if stop:
-                grid[y, x] += 1
+        for stop in self.bstop:
+            grid[self.ycoord,self.xcoord] = 1
+            if stop != ' ':
+                grid[self.ycoord,self.xcoord] += 1
         fig, ax = plt.subplots(1, 1)
         ax.pcolor(grid)
         ax.invert_yaxis()
