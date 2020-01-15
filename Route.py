@@ -2,41 +2,33 @@ import numpy as np
 import matplotlib.pyplot as plt
 from read_passengers import Read_route
 
-#pathroute = input("path to route\n> ")
-
-pathroute = "route.csv"
-
-route=Read_route(pathroute)
-xcoord=[]
-ycoord=[]
-bstop=[]
-stopno=[]
-
-for points in range(len(route)):
-    xcoord.append(route[points][0])
-    ycoord.append(route[points][1])
-    bstop.append(route[points][2])
-
-
 class Route:
 
-
-    def __init__(self,xcoord,ycoord,bstop): 
-        self.xcoord = xcoord
-        self.ycoord = ycoord
-        self.bstop = bstop
-                
+    def __init__(self,route, speed): 
+        self.speed = speed
+        self.route = Read_route(route)
+        self.xcoord=[]
+        self.ycoord=[]
+        self.bstop=[]
+        for points in range(len(self.route)):
+            self.xcoord.append(self.route[points][0])
+            self.ycoord.append(self.route[points][1])
+            self.bstop.append(self.route[points][2]) 
+   
        
     def timetable(self):
-        
+        self.stopno=[]
+        self.timetablevec=[]
         time=0
         for tick in range(len(self.bstop)):
             if self.bstop[tick] != '':
-                stopno.append(time)
+                self.stopno.append(time)
             else: 
-                stopno.append('')
-            time+= 10
-        return stopno,self.bstop     
+                self.stopno.append('')
+            time+= self.speed
+        for points in range(len(self.bstop)):
+            self.timetablevec.append((self.bstop[points],self.stopno[points]))
+        return self.timetablevec    
   
       
     def plot_map(self):
@@ -45,7 +37,7 @@ class Route:
         grid = np.zeros((max_y, max_x))
         for stop in self.bstop:
             grid[self.ycoord,self.xcoord] = 1
-            if stop != ' ':
+            if stop != '':
                 grid[self.ycoord,self.xcoord] += 1
         fig, ax = plt.subplots(1, 1)
         ax.pcolor(grid)
