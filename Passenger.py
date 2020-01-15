@@ -8,22 +8,22 @@ pathpassenger = "passenger.csv"
 
 
 start=[]
-stop=[]
+end=[]
 pace=[]
 
 passengers,passenger_id=Read_passengers(pathpassenger)
-start,stop,pace = passengers[i] 
+start,end,pace = passengers[i] 
 
 
 class Passenger:
 
 
-    def __init__(self,start,stop,pace):
+    def __init__(self,start,end,pace):
         self.start = start
-        self.stop = stop
+        self.end = end
         self.pace = pace
     
     
     def walktime(self):
-        return np.sqrt((self.start[0]-self.stop[0])**2+(self.start[1]-self.stop[1])**2)*self.pace
+        return np.sqrt((self.start[0]-self.end[0])**2+(self.start[1]-self.end[1])**2)*self.pace
     
