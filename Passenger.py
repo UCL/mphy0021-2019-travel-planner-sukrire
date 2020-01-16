@@ -1,11 +1,6 @@
 import numpy as np
 from read_passengers import Read_passengers
 
-#pathpassenger = input("path to passenger\n> ")
-#i= int(input("which passenger\n> "))
-#pathpassenger = "passenger.csv"
-#i=0
-
 class Passenger:
 
     def __init__(self,pathpassenger,passno):
