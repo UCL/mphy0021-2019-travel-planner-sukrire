@@ -1,46 +1,46 @@
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+import Passenger
+import Route
 
+class Journey:  
+    
+    def __init__(self,route,passenger,speed,passno):
+        self.route = Route.Route(route,speed)
+        self.passenger = Passenger.Passenger(passenger,passno)
+        self.timetable= Route.Route.timetable(self.route)
+        self.stops = [step[2] for step in self.timetable if step[0]]
+        
+    def plot_bus_load(self):
+        self.value = {value[2]:0 for value in self.timetable if value[0]}
+        self.stoplabels = [step[0] for step in self.timetable if step[0]]
+        for testpass in range(len(self.passenger.passengers)):
+            self.value[self.passenger_trip(testpass)[0][1]] += 1
+            self.value[self.passenger_trip(testpass)[1][1]] -= 1
+        for i, stop in enumerate(self.value):
+            if i > 0:
+                self.value[stop] += self.value[prev]
+            prev = stop
+        fig, ax = plt.subplots()
+        ax.step(range(len(self.value)), list(self.value.values()), where='post')
+        ax.set_xticks(range(len(self.stops)))
+        ax.set_xticklabels(list(self.stoplabels))
+        plt.show()
+        
+    def passenger_trip(self,testpass):
+        # calculate closer stops
+        ## to start
+        self.distances = [(math.sqrt((self.route.xcoord[stop] - self.passenger.passengers[testpass][0][0])**2 + (self.route.ycoord[stop] - self.passenger.passengers[testpass][0][1])**2), stop) for stop in self.stops]
+        closer_start = min(self.distances)
+        ## to endRoute.
+        self.distances = [(math.sqrt((self.route.xcoord[stop] - self.passenger.passengers[testpass][1][0])**2 + (self.route.ycoord[stop] - self.passenger.passengers[testpass][1][1])**2), stop) for stop in self.stops]
+        closer_end = min(self.distances)
+        return (closer_start, closer_end)
 
-def plot_bus_load(route, passengers):
-    stops = {step[2]:0 for step in route if step[2]}
-    for j in range(len(passengers)):
-        trip = passenger_trip(passengers[j], route)
-        stops[trip[0][1]] += 1
-        stops[trip[1][1]] -= 1
-    for i, stop in enumerate(stops):
-        if i > 0:
-            stops[stop] += stops[prev]
-        prev = stop
-    fig, ax = plt.subplots()
-    ax.step(range(len(stops)), list(stops.values()), where='post')
-    ax.set_xticks(range(len(stops)))
-    ax.set_xticklabels(list(stops.keys()))
-    plt.show()
+    def passenger_trip_time(self,testpass):
+        bus_times = [row[1] for row in self.timetable]
+        bus_travel = bus_times[self.passenger_trip(testpass)[1][1]] - bus_times[self.passenger_trip(testpass)[0][1]]
+        walk_travel = self.passenger_trip(testpass)[0][0] * self.passenger.pace + self.passenger_trip(testpass)[1][0] * self.passenger.pace
+        return bus_travel + walk_travel
     
-def passenger_trip(passenger, route):
-    start, end, pace = passenger
-    stops = [value for value in route if value[2]]
-    # calculate closer stops
-    ## to start
-    distances = [(math.sqrt((x - start[0])**2 + (y - start[1])**2), stop) for x,y,stop in stops]
-    closer_start = min(distances)
-    ## to end
-    distances = [(math.sqrt((x - end[0])**2 + (y - end[1])**2), stop) for x,y,stop in stops]
-    closer_end = min(distances)
-    return (closer_start, closer_end)
-
-def passenger_trip_time(passenger, route):
-    walk_distance_stops = passenger_trip(passenger, route)
-    bus_times = timetable(route)
-    bus_travel = bus_times[walk_distance_stops[1][1]] - \  bus_times[walk_distance_stops[0][1]]
-    walk_travel = walk_distance_stops[0][0] * passenger[2] + \ walk_distance_stops[1][0] * passenger[2]
-    return bus_travel + walk_travel
-    
-    
-for i in range(len(passgens)):
-    print(f"Trip for passenger: {passenger_id[i]}")
-    start, end = passenger_trip(genpassenger[i], route2)
-    total_time = passenger_trip_time(genpassenger[i], route2)
-    print((f" Walk {start[0]:3.2f} units to stop {start[1]}, \n"
-    f" get on the bus and alite at stop {end[1]} and \n"
-    f" walk {end[0]:3.2f} units to your destination."))
-    print(f" Total time of travel: {total_time:03.2f} minutes")
