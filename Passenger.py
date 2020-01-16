@@ -12,8 +12,8 @@ class Passenger:
         self.start = []
         self.end = []
         self.pace = []
-        passengers,passenger_id=Read_passengers(pathpassenger)
-        self.start,self.end,self.pace = passengers[passno]
+        self.passengers,self.passenger_id=Read_passengers(pathpassenger)
+        self.start,self.end,self.pace = self.passengers[passno]
    
     def walktime(self):
         return np.sqrt((self.start[0]-self.end[0])**2+(self.start[1]-self.end[1])**2)*self.pace

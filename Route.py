@@ -17,17 +17,22 @@ class Route:
    
        
     def timetable(self):
-        self.stopno=[]
+        self.stoptime=[]
         self.timetablevec=[]
+        self.stopno=[]
         time=0
+        stopcount=0
         for tick in range(len(self.bstop)):
             if self.bstop[tick] != '':
-                self.stopno.append(time)
+                self.stoptime.append(time)
+                self.stopno.append(stopcount)
             else: 
+                self.stoptime.append('')
                 self.stopno.append('')
             time+= self.speed
+            stopcount+= 1
         for points in range(len(self.bstop)):
-            self.timetablevec.append((self.bstop[points],self.stopno[points]))
+            self.timetablevec.append((self.bstop[points],self.stoptime[points],self.stopno[points]))
         return self.timetablevec    
   
       
