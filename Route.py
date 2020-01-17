@@ -37,13 +37,14 @@ class Route:
   
       
     def plot_map(self):
+        self.stopmarks = [step[2] for step in self.timetable() if step[0]]
         max_x = max([n for n in self.xcoord]) + 5 # adds padding
         max_y = max([n for n in self.ycoord]) + 5
         grid = np.zeros((max_y, max_x))
         for stop in self.bstop:
             grid[self.ycoord,self.xcoord] = 1
-            if stop != '':
-                grid[self.ycoord,self.xcoord] += 1
+        for stop in self.stopmarks:
+                grid[self.ycoord[self.timetable()[stop][2]],self.xcoord[self.timetable()[stop][2]]] += 1
         fig, ax = plt.subplots(1, 1)
         ax.pcolor(grid)
         ax.invert_yaxis()
@@ -70,7 +71,7 @@ class Route:
         6: (0, 1),
         7: (1, 1)}
         freeman_coord2cc = {val: key for key,val in freeman_cc2coord.items()}
-        for b, a in zip(route[1:], route):
+        for b, a in zip(self.route[1:], self.route):
             x_step = b[0] - a[0]
             y_step = b[1] - a[1]
             cc.append(str(freeman_coord2cc[(x_step, y_step)]))
