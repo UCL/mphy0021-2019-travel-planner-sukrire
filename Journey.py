@@ -6,9 +6,9 @@ import Route
 
 class Journey(Passenger):  
     
-	def __init__(self,route, passen=None ,speed = None, passno=0 ,start=None,end=None,pace=None, pathpassenger = None):
-		super().__init__(start=None,end=None,pace=None,pathpassenger=None)
-		self.route = Route.Route(route)
+	def __init__(self,route,speed = 10, passno=0 ,start=None,end=None,pace=None, pathpassenger = None):
+		super().__init__(start=start,end=end,pace=pace,pathpassenger=None)
+		self.route = Route.Route(route,speed=10)
 		self.stops = [step[2] for step in self.route.timetable() if step[0]]
         
 	def plot_bus_load(self):
@@ -34,8 +34,8 @@ class Journey(Passenger):
 		ax.set_xticklabels(list(self.stoplabels))
 		plt.show()
 		
-	def passenger_trip(self,):
-		distances = [(math.sqrt((self.route.xcoord[stop] - self.specifystart[0])**2 + (self.route.ycoord[stop] - self.specifstart[1])**2), stop) for stop in self.stops]
+	def passenger_trip(self):
+		distances = [(math.sqrt((self.route.xcoord[stop] - self.specifystart()[0])**2 + (self.route.ycoord[stop] - self.specifystart()[1])**2), stop) for stop in self.stops]
 		closer_start = min(self.distances)
 		## to endRoute.
 		distances = [(math.sqrt((self.route.xcoord[stop] - self.passenger.passengers[testpass][1][0])**2 + (self.route.ycoord[stop] - self.passenger.passengers[testpass][1][1])**2), stop) for stop in self.stops]
