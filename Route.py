@@ -4,8 +4,8 @@ from read_passengers import Read_route
 
 class Route:
 
-    def __init__(self,route, speed): 
-        self.speed = speed
+    def __init__(self,route, speed=10): 
+        self.speed = speed                     
         self.route = Read_route(route)
         self.xcoord=[]
         self.ycoord=[]

@@ -6,7 +6,7 @@ import Route
 
 class Journey:  
     
-    def __init__(self,route,passenger,speed,passno):
+    def __init__(self,route,passenger,passno, speed=10):
         self.route = Route.Route(route,speed)
         self.passenger = Passenger.Passenger(passenger,passno)
         self.timetable= Route.Route.timetable(self.route)
