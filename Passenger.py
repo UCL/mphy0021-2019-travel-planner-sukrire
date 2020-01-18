@@ -3,7 +3,7 @@ from read_passengers import Read_passengers
 
 class Passenger:
 
-    def __init__(self, pathpassenger="passengers.csv", passno=0 ,start=[],end=[],pace=[]):
+    def __init__(self, pathpassenger="passengers.csv", passno=0 ,start=None,end=None,pace=None):
         self.start = []
         self.end = []
         self.pace = []
