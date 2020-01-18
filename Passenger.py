@@ -11,7 +11,7 @@ class Passenger:
 		self.specifyend = end
 		self.specifypace = pace
 		if pathpassenger is not None:
-			self.passengers,self.passenger_id=Read_passengers(pathpassenger)
+			self.passengers=Read_passengers(pathpassenger)
 			self.start,self.end,self.pace = self.passengers[passno]
    
 	def walktime(self, passno=None):
