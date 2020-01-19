@@ -1,4 +1,3 @@
-from read_passengers import read_passengers
 from Passenger import Passenger
 from Route import Route
 from Journey import Journey
