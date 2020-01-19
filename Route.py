@@ -10,6 +10,9 @@ class Route:
         self.xcoord=[]
         self.ycoord=[]
         self.bstop=[]
+        route_cc=self.route_cc()
+        for i in route_cc[1]:
+            assert int(i) % 2 == 0, 'Diagonal route'
         for points in range(len(self.route)):
             self.xcoord.append(self.route[points][0])
             self.ycoord.append(self.route[points][1])
