@@ -1,20 +1,25 @@
 import numpy as np
 from read_passengers import Read_passengers
 
-#pathpassenger = input("path to passenger\n> ")
-#i= int(input("which passenger\n> "))
-#pathpassenger = "passenger.csv"
-#i=0
-
 class Passenger:
 
-    def __init__(self,pathpassenger,passno):
+    def __init__(self, pathpassenger=None, passno=0 ,start=None,end=None,pace=None):
         self.start = []
         self.end = []
         self.pace = []
-        self.passengers,self.passenger_id=Read_passengers(pathpassenger)
-        self.start,self.end,self.pace = self.passengers[passno]
-   
-    def walktime(self):
-        return np.sqrt((self.start[0]-self.end[0])**2+(self.start[1]-self.end[1])**2)*self.pace
+        self.specifystart = start
+        self.specifyend = end
+        self.specifypace = pace
+        if pathpassenger is not None:
+            self.passengers=Read_passengers(pathpassenger)
+            self.start,self.end,self.pace = self.passengers[passno]
+
+    def walktime(self, passno=None):
+        if passno is None:
+            walkstart = self.specifystart
+            walkend = self.specifyend
+            walkpace = self.specifypace	
+        else:
+            walkstart,walkend,walkpace = self.passengers[passno]   
+        return np.sqrt((walkstart[0]-walkend[0])**2+(walkstart[1]-walkend[1])**2)*walkpace
     
