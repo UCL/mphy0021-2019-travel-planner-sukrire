@@ -1,6 +1,7 @@
-from Passenger import Passenger
-from Route import Route
-from Journey import Journey
+from travelplanner.read_passengers import Read_passengers,Read_route
+from travelplanner.Passenger import Passenger
+from travelplanner.Route import Route
+from travelplanner.Journey import Journey
 import pytest
 
 #need to write tests for read passengers
