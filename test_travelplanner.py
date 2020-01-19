@@ -31,7 +31,8 @@ def test_walk_time():
 def test_Route():
     testroute = Route("route.csv")
     assert testroute.bstop[0] == 'A'
-    #assert(Route("route_wrong.csv")) =  'Diagonal route'   
+    with pytest.raises(AssertionError):
+        wrong_route = Route("route_wrong.csv")
     
 def test_timetimetable():
     testroute = Route("route.csv")
