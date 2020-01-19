@@ -60,8 +60,6 @@ class Journey:
 			bus_pass=1
 		print ("Average time spent on bus:" ,total_time_on_bus/bus_pass,"\n","Average time spent walking:" ,round(total_time_walking/walker,2))
 		
-		
-		
 	def passenger_trip(self,testpass):
 		# calculate closer stops
 		## to start
