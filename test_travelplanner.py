@@ -22,7 +22,7 @@ def test_Passenger():
     assert testpassengers.specifyend == None
     assert testpassengers.specifypace == None
     
-def test_walk_time():
+def test_walktime():
     testwalktime = Passenger(start=(0,0),end=(3,4),pace=10)
     assert testwalktime.walktime() == 50
     
