@@ -9,6 +9,6 @@ setup(
     install_requires=['numpy', 'pytest', 'matplotlib'],
     entry_points={
         'console_scripts': [
-            'bussimula = travelplanner.Command:process'
+            'bussimula = travelplanner.command:process'
             ]}
     )
