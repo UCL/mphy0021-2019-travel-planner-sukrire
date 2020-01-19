@@ -2,11 +2,11 @@ from setuptools import setup, find_packages
 
 setup(
     name='travelplanner',
-    version='0.1.0',
-    author='Edward Dowling',
-    author_email='edwardjdowling@gmail.com',
+    version='0.0.0',
+    author='Sandro Moszczynski',
+    author_email='ucapsmj@ucl.ac.uk',
     packages=find_packages(exclude=['*test']),
-    install_requires=['numpy', 'pandas', 'pytest', 'matplotlib'],
+    install_requires=['numpy', 'pytest', 'matplotlib'],
     entry_points={
         'console_scripts': [
             'bussimula = travelplanner.Command:process'

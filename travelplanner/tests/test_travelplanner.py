@@ -3,8 +3,10 @@ from Route import Route
 from Journey import Journey
 import pytest
 
+#need to write tests for read passengers
 
 #passenger class tests
+
 
 def test_Passenger():
     testpassenger = Passenger(start=(0,0),end=(3,4),pace=10)
@@ -27,7 +29,8 @@ def test_walktime():
     assert testwalktime.walktime() == 50
     
 #route class tests    
-    
+# need to write tests for routemap
+   
 def test_Route():
     testroute = Route("route.csv")
     assert testroute.bstop[0] == 'A'
@@ -39,6 +42,7 @@ def test_timetimetable():
     assert(testroute.timetable()[12]) == ('B', 120, 12)
     
 #journey class tests
+#need to add tests for other 2 functions
 
 def test_Journey():
     journeytest=Journey("route.csv","passenger.csv",speed=10)
