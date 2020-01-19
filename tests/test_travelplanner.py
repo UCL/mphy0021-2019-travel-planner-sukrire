@@ -1,7 +1,7 @@
-from travelplanner.read_passengers import read_passengers
-from travelplanner.Passenger import Passenger
-from travelplanner.Route import Route
-from travelplanner.Journey import Journey
+from read_passengers import read_passengers
+from Passenger import Passenger
+from Route import Route
+from Journey import Journey
 import pytest
 
 #passenger class tests
