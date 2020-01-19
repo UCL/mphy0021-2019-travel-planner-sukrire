@@ -1,15 +1,16 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-import Passenger
-import Route
+from travelplanner.Passenger import Passenger
+from travelplanner.Route import Route
+
 
 class Journey:  
     
 	def __init__(self,route,passenger,passno=0, speed=10):
-		self.route = Route.Route(route,speed)
-		self.passenger = Passenger.Passenger(passenger,passno)
-		self.timetable= Route.Route.timetable(self.route)
+		self.route = Route(route,speed)
+		self.passenger = Passenger(passenger,passno)
+		self.timetable= Route.timetable(self.route)
 		self.stops = [step[2] for step in self.timetable if step[0]]
 		
 	def plot_bus_load(self):

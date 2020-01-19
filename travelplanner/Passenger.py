@@ -1,5 +1,5 @@
 import numpy as np
-from read_passengers import Read_passengers
+from travelplanner.read_passengers import Read_passengers
 
 class Passenger:
 

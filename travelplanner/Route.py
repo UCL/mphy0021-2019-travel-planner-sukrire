@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from read_passengers import Read_route
+from travelplanner.read_passengers import Read_route
 
 class Route:
 
