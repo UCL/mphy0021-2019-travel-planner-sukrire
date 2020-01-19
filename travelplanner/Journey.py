@@ -1,8 +1,9 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-import Passenger
-import Route
+from travelplanner.Passenger import Passenger
+from travelplanner.Route import Route
+
 
 class Journey:  
     
