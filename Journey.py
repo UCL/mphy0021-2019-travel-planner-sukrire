@@ -45,20 +45,20 @@ class Journey:
 		return self.traveldic
 
 	def print_time_stats(self):
-		total_time_on_bus=0
-		total_time_walking=0
-		bus_pass=0
-		walker=0
+		self.total_time_on_bus=0
+		self.total_time_walking=0
+		self.bus_pass=0
+		self.walker=0
 		for commuter in range(len(self.passenger.passengers)):
-			total_time_walking += float(self.travel_time()[commuter+1][0])
-			total_time_on_bus += float(self.travel_time()[commuter+1][1])
+			self.total_time_walking += float(self.travel_time()[commuter+1][0])
+			self.total_time_on_bus += float(self.travel_time()[commuter+1][1])
 			if float(self.travel_time()[commuter+1][1]) != 0:
-				bus_pass += 1
+				self.bus_pass += 1
 			if float(self.travel_time()[commuter+1][0]) != 0:
-				walker += 1
-		if bus_pass == 0:
-			bus_pass=1
-		print ("Average time spent on bus:" ,total_time_on_bus/bus_pass,"\n","Average time spent walking:" ,round(total_time_walking/walker,2))
+				self.walker += 1
+		if self.bus_pass == 0:
+			self.bus_pass=1
+		print ("Average time spent on bus:" ,self.total_time_on_bus/self.bus_pass,"\n","Average time spent walking:" ,round(self.total_time_walking/self.walker,2))
 		
 	def passenger_trip(self,testpass):
 		# calculate closer stops
