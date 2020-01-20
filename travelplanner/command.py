@@ -43,11 +43,10 @@ def process():
     if arguments.saveplots:
         # Plots the route of the bus
         route_map = route_for_timetable.plot_map()
-        plt.show()
-        route_map.savefig('./map.png')
+        plt.savefig('./map.png')
         # Plots the number of passenger on the bus
         bus_load_map = passengers_for_times.plot_bus_load()
-        bus_load_map.savefig('./load.png')
+        plt.savefig('./load.png')
 
 
 if __name__ == "__main__":
