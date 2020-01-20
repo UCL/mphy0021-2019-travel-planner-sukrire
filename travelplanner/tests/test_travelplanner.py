@@ -31,7 +31,6 @@ def test_walktime():
     assert testwalktime.walktime() == 50
     
 #route class tests    
-# need to write tests for routemap
    
 def test_Route():
     testroute = Route("travelplanner/tests/route.csv")
@@ -42,6 +41,11 @@ def test_Route():
 def test_timetimetable():
     testroute = Route("travelplanner/tests/route.csv")
     assert(testroute.timetable()[12]) == ('B', 120, 12)
+
+def test_plot_map():
+    testroute = Route("travelplanner/tests/route.csv")
+    assert testroute.plot_map() != 0
+    
     
 #journey class tests
 #need to add tests for other 2 functions
@@ -49,6 +53,10 @@ def test_timetimetable():
 def test_Journey():
     journeytest=Journey("travelplanner/tests/route.csv","travelplanner/tests/passenger.csv",speed=10)
     assert journeytest.stops == [0, 12, 17, 18, 19, 22, 25]
+    
+def test_plot_bus_load():
+    journeytest=Journey("travelplanner/tests/route.csv","travelplanner/tests/passenger.csv",speed=10)
+    assert journeytest.plot_bus_load() != 0
     
 def test_travel_time():
     jtesttt=Journey("travelplanner/tests/route.csv","travelplanner/tests/passenger.csv")
