@@ -5,6 +5,7 @@ from travelplanner.Route import Route
 from travelplanner.Journey import Journey
 import numpy as np
 import matplotlib.pyplot as plt
+import travelplanner
 
 
 def process():
@@ -15,7 +16,7 @@ def process():
                         help='Please give full pathname to passenger.csv')
     parser.add_argument('--speed', default=10, type=int,
                         help='Give the speed of the bus, lower is faster')
-    parser.add_argument('--saveplots', default=False,
+    parser.add_argument('--saveplots', action='store_true',
                         help='Optional, If given, save the plots.')
     arguments = parser.parse_args()
     pft = travelplanner.Journey(arguments.routefile, arguments.passfile,
