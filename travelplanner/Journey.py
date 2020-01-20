@@ -88,12 +88,14 @@ class Journey:
 
     def passenger_trip_time(self, testpass):
         bus_times = [row[1] for row in self.timetable]
-        bus_travel = bus_times[self.passenger_trip(testpass)[1][1]] -
-        bus_times[self.passenger_trip(testpass)[0][1]]
-        walk_travel = self.passenger_trip(testpass)[0][0] * self.passenger.pace
-        + self.passenger_trip(testpass)[1][0] * self.passenger.pace
-        if (bus_travel+walk_travel) >=
-        self.passenger.walktime(testpass) or bus_travel <= 0:
+        bus_travel = (bus_times[self.passenger_trip(testpass)[1][1]] -
+                      bus_times[self.passenger_trip(testpass)[0][1]])
+        walk_travel = (self.passenger_trip(testpass)[0][0] *
+                       self.passenger.pace +
+                       self.passenger_trip(testpass)[1][0] *
+                       self.passenger.pace)
+        if (bus_travel+walk_travel) >=  \
+           self.passenger.walktime(testpass) or bus_travel <= 0:
             return (0, 0)
         else:
             return (walk_travel, bus_travel)
