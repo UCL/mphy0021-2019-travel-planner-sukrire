@@ -48,8 +48,8 @@ class Route:
         for stop in self.bstop:
             grid[self.ycoord, self.xcoord] = 1
         for stop in self.stopmarks:
-                grid[self.ycoord[self.timetable()[stop][2]],
-                     self.xcoord[self.timetable()[stop][2]]] += 1
+            grid[self.ycoord[self.timetable()[stop][2]],
+                 self.xcoord[self.timetable()[stop][2]]] += 1
         fig, ax = plt.subplots(1, 1)
         ax.pcolor(grid)
         ax.invert_yaxis()

@@ -6,6 +6,7 @@ before_install:
   - gem install rake
 install:
   - pip3 install requests pyyaml pytest pytest-cov
+  - pip3 install .
   - pip3 install matplotlib
 # command to run tests
 script:
