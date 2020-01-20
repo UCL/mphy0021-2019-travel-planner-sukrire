@@ -27,7 +27,7 @@ class Journey:
 		ax.step(range(len(self.value)), list(self.value.values()), where='post')
 		ax.set_xticks(range(len(self.stops)))
 		ax.set_xticklabels(list(self.stoplabels))
-		plt.show() 
+		return ax
 		
 	def travel_time(self):
 		list_walktime = ['Walk time']

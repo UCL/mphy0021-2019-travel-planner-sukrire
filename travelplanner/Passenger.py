@@ -22,4 +22,3 @@ class Passenger:
         else:
             walkstart,walkend,walkpace = self.passengers[passno]   
         return np.sqrt((walkstart[0]-walkend[0])**2+(walkstart[1]-walkend[1])**2)*walkpace
-    
