@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='travelplanner',
-    version='0.0.0',
+    version='0.8.0',
     author='Sandro Moszczynski',
     author_email='ucapsmj@ucl.ac.uk',
     packages=['travelplanner'],

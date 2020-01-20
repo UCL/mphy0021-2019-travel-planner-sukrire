@@ -1,1 +1,5 @@
-some stuff in here for now
+- Name: Sandro Moszczynski
+- Date: 20/01/20
+- Package Name: travelplanner
+- Code version: 0.8.0
+- Type: computer program
