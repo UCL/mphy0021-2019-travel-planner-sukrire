@@ -1,3 +1,6 @@
 .pytest_cache
+load.png
+map.png
+travelplanner.egg-info
 __pycache__
 .git
