@@ -12,5 +12,5 @@ install:
 script:
   - cd travelplanner
   - pytest 
-  - pytest --cov
+  - pytest --cov=./
   - python3 -m doctest -v Journey.py
