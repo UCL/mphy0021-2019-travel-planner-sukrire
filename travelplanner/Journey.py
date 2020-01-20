@@ -63,10 +63,10 @@ class Journey:
                 self.walker += 1
         if self.bus_pass == 0:
             self.bus_pass = 1
-        print ("Average time spent on bus:",
-               self.total_time_on_bus/self.bus_pass,
-               "\n", "Average time spent walking:",
-               round(self.total_time_walking/self.walker, 2))
+        print("Average time spent on bus:",
+              self.total_time_on_bus/self.bus_pass,
+              "\n", "Average time spent walking:",
+              round(self.total_time_walking/self.walker, 2))
 
     def passenger_trip(self, testpass):
         """ Tests passenger_trip for single journey
