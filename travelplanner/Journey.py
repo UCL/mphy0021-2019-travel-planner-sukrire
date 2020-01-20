@@ -69,6 +69,20 @@ class Journey:
                round(self.total_time_walking/self.walker, 2))
 
     def passenger_trip(self, testpass):
+        """ Tests passenger_trip for single journey
+
+        Returns
+        --------
+        float
+            Time the passenger walks
+
+        Example
+        -------
+        >>> journeytest = Journey("travelplanner/tests/route.csv",
+                          "travelplanner/tests/passenger.csv", speed=10)
+        >>> journeytest_passenger_trip(0)
+        ((7.615773105863909, 0), (10.198039027185569, 25))
+        """
         # calculate closer stops
         #  to start
         self.distances = [(math.sqrt((self.route.xcoord[stop] -
