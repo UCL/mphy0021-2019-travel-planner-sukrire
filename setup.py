@@ -5,7 +5,7 @@ setup(
     version='0.0.0',
     author='Sandro Moszczynski',
     author_email='ucapsmj@ucl.ac.uk',
-    packages=find_packages(exclude=['*test']),
+    packages=['travelplanner'],
     install_requires=['numpy', 'pytest', 'matplotlib'],
     entry_points={
         'console_scripts': [
