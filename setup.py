@@ -7,12 +7,8 @@ setup(
     author_email='ucapsmj@ucl.ac.uk',
     packages=find_packages(exclude=['*test']),
     install_requires=['numpy', 'pytest', 'matplotlib'],
+    entry_points={
+        'console_scripts': [
+            'bussimula = travelplanner.command:process'
+            ]}
     )
-    
-'''
-entry_points={
-    'console_scripts': [
-        'bussimula = travelplanner.command:process'
-        ]}
-)
-'''

@@ -51,7 +51,7 @@ class Route:
         ax.pcolor(grid)
         ax.invert_yaxis()
         ax.set_aspect('equal', 'datalim')
-        plt.show()
+        return ax
 
     def route_cc(self):
         '''
