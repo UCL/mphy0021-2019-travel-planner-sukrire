@@ -78,7 +78,7 @@ class Journey:
 
         Example
         -------
-        >>> journeytest = Journey("travelplanner/tests/route.csv",
+        >>> journeytest = Journey("tests/route.csv",
                           "travelplanner/tests/passenger.csv", speed=10)
         >>> journeytest_passenger_trip(0)
         ((7.615773105863909, 0), (10.198039027185569, 25))
