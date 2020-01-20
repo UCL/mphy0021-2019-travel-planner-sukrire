@@ -10,7 +10,7 @@ import pytest
 
 def test_Passenger():
     testpassenger = Passenger(start=(0, 0), end=(3, 4), pace=10)
-    testpassengers = Passenger("travelplanner/tests/passenger.csv")
+    testpassengers = Passenger("tests/passenger.csv")
     assert testpassenger.start == []
     assert testpassenger.end == []
     assert testpassenger.pace == []
@@ -33,45 +33,45 @@ def test_walktime():
 
 
 def test_Route():
-    testroute = Route("travelplanner/tests/route.csv")
+    testroute = Route("tests/route.csv")
     assert testroute.bstop[0] == 'A'
     with pytest.raises(AssertionError):
-        wrong_route = Route("travelplanner/tests/route_wrong.csv")
+        wrong_route = Route("tests/route_wrong.csv")
 
 
 def test_timetimetable():
-    testroute = Route("travelplanner/tests/route.csv")
+    testroute = Route("tests/route.csv")
     assert(testroute.timetable()[12]) == ('B', 120, 12)
 
 
 def test_plot_map():
-    testroute = Route("travelplanner/tests/route.csv")
+    testroute = Route("tests/route.csv")
     assert testroute.plot_map() != 0
 
 # journey class tests
 
 
 def test_Journey():
-    journeytest = Journey("travelplanner/tests/route.csv",
-                          "travelplanner/tests/passenger.csv", speed=10)
+    journeytest = Journey("tests/route.csv",
+                          "tests/passenger.csv", speed=10)
     assert journeytest.stops == [0, 12, 17, 18, 19, 22, 25]
 
 
 def test_plot_bus_load():
-    journeytest = Journey("travelplanner/tests/route.csv",
-                          "travelplanner/tests/passenger.csv", speed=10)
+    journeytest = Journey("tests/route.csv",
+                          "tests/passenger.csv", speed=10)
     assert journeytest.plot_bus_load() != 0
 
 
 def test_travel_time():
-    jtesttt = Journey("travelplanner/tests/route.csv",
-                      "travelplanner/tests/passenger.csv")
+    jtesttt = Journey("tests/route.csv",
+                      "tests/passenger.csv")
     assert jtesttt.travel_time()[1] == ['266.4432397340942', '0']
 
 
 def test_print_time_stats():
-    jtestpts = Journey("travelplanner/tests/route.csv",
-                       "travelplanner/tests/passenger.csv")
+    jtestpts = Journey("tests/route.csv",
+                       "tests/passenger.csv")
     jtestpts.print_time_stats()
     assert (jtestpts.total_time_on_bus/jtestpts.bus_pass) == 0
     assert round(jtestpts.total_time_walking/jtestpts.walker, 2) == 194.44
