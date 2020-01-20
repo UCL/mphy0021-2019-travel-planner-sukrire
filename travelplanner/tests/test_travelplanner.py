@@ -5,10 +5,7 @@ from travelplanner.Journey import Journey
 import numpy as np
 import pytest
 
-#need to write tests for read passengers
-
 #passenger class tests
-
 
 def test_Passenger():
     testpassenger = Passenger(start=(0,0),end=(3,4),pace=10)
@@ -45,10 +42,8 @@ def test_timetimetable():
 def test_plot_map():
     testroute = Route("travelplanner/tests/route.csv")
     assert testroute.plot_map() != 0
-    
-    
+      
 #journey class tests
-#need to add tests for other 2 functions
 
 def test_Journey():
     journeytest=Journey("travelplanner/tests/route.csv","travelplanner/tests/passenger.csv",speed=10)
