@@ -75,4 +75,3 @@ def test_print_time_stats():
     jtestpts.print_time_stats()
     assert (jtestpts.total_time_on_bus/jtestpts.bus_pass) == 0
     assert round(jtestpts.total_time_walking/jtestpts.walker, 2) == 194.44
-
